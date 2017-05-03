@@ -1,0 +1,40 @@
+
+.quicknav {
+  background-color: #222;
+  border-bottom: 1px solid #151515;
+  color: #eee;
+  font-family: Helvetica;
+  font-size: 11px;
+  line-height: normal;
+  padding-left: 20px;
+}
+
+.quicknav > ul {
+  margin: 0;
+  opacity: 0.3;
+  padding: 2px;
+}
+
+.quicknav > ul:hover {
+  opacity: 1.0;
+}
+
+.quicknav li {
+  float: left;
+  padding-right: 20px;
+  list-style-type: none;
+}
+
+.quicknav a {
+  color: #eee;
+  text-decoration: none;
+}
+
+.quicknav a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.clear {
+  clear: both;
+}
