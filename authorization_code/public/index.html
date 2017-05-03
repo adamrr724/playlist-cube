@@ -4,6 +4,7 @@
     <title>Playlist Cube</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <style type="text/css">
       #login, #loggedin {
@@ -28,16 +29,19 @@
         display:flex;
         justify-content: center;
         height: 400px;
-        background-image: url("../cube.jpg");
+        background-color: #607D8B;
         background-size: 100%;
         background-repeat: no-repeat;
         box-shadow: 1px 1px 2px grey;
       }
     .header_logo{
-        margin: 150px 0 25px 0;
+        margin: 40px 0 25px 0;
         color: white;
-        text-shadow: 2px 2px 4px #000000;
-        font-size: 50px;
+        text-shadow: .5px .5px 3px #EEEEEE;
+        font-size: 65px;
+        font-weight: bold;
+        font-family: 'Montserrat', sans-serif;
+        color: #424242;
     }
     .user_body{
       margin: 25px;
@@ -45,14 +49,18 @@
     .playlist_body{
       text-align: center;
       margin: 25px;
-      background-color: #424242;
+      background-color:#607D8B;
       border-radius: 5px;
       box-shadow: 2px 2px 2px #424242;
-      font-weight: 100;
-      color: #E0E0E0;
+      /*font-weight: bold;*/
+      color: #FAFAFA;
       width: 500px;
       padding: 10px;
-      text-shadow: 1px 1px 1px black;
+      padding-bottom: 30px;
+      text-shadow: 1px 1px 3px #424242;
+    }
+    .header-box{
+      flex-direction: column;
     }
     .media-object{
       border-radius: 75px;
@@ -69,6 +77,14 @@
     .login-block {
       display:flex;
       justify-content: center;
+    }
+    .logo{
+      height:270px;
+      width: 250px;
+      padding-bottom: 30px;
+      filter: drop-shadow(1px 1px 3px #BDBDBD);
+      /*margin-left: 15px;*/
+      /*box-shadow: 1px 1px 2px white;*/
     }
     #login{
       text-align: center;
@@ -88,7 +104,7 @@
     <div class="">
       <div class="login-block">
         <div id="login">
-          <h1>Welcome to the Playlist Cube</h1>
+          <h1>Welcome to the Spotidi</h1>
           <h3>Please login to your Spotify Account</h3>
           <a href="/login"><img class="spotify-button" src="../spotify.png"></a>
         </div>
@@ -106,7 +122,10 @@
 
     <script id="user-profile-template" type="text/x-handlebars-template">
         <div class="jumbo">
-          <h1 class="header_logo">Pandora's Box</h1>
+          <div class="header-box">
+            <h1 class="header_logo">Spotidi</h1>
+            <img class="logo" src="../playlistdice.png">
+          </div>
         </div>
         <div class="profile-block">
         <div class="user_body">
@@ -147,7 +166,7 @@
               </dl>
             </div>
             <h6>Media Player</h6>
-            <iframe class="media-player" src="https://open.spotify.com/embed?uri=spotify:user:121434603:playlist:4XfGxthhNEfItPNJ1Oh6On" width="400" height="500" frameborder="0"
+            <iframe class="media-player" src="https://open.spotify.com/embed?uri=spotify:user:121434603:playlist:4XfGxthhNEfItPNJ1Oh6On&view=coverart" width="400" height="500" frameborder="0" allowtransparency="true"
           </div>
         </div>
       </div>
