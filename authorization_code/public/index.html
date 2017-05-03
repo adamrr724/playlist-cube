@@ -1,10 +1,11 @@
 <!doctype html>
 <html>
   <head>
-    <title>Playlist Cube</title>
+    <title>Spotidi</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="icon" href="../playlistdice.png">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <style type="text/css">
       #login, #loggedin {
@@ -114,6 +115,8 @@
         </div>
         <div id="playlist">
         </div>
+        <div id="mediaplayer">
+        </div>
         <div id="oauth">
         </div>
         <!-- <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button> -->
@@ -165,12 +168,18 @@
                 <dd class="clearfix">{{items.5.name}}</dd>
               </dl>
             </div>
-            <h6>Media Player</h6>
-            <iframe class="media-player" src="https://open.spotify.com/embed?uri=spotify:user:121434603:playlist:4XfGxthhNEfItPNJ1Oh6On&view=coverart" width="400" height="500" frameborder="0" allowtransparency="true"
           </div>
         </div>
       </div>
     </script>
+
+    <script id="media-player" type="text/x-handlebars-template">
+    <h6>Media Player</h6>
+    <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" autoplay="true" allowtransparency="true">
+      <!-- <iframe class="media-player" src="https://open.spotify.com/embed?uri=spotify:user:121434603:playlist:4XfGxthhNEfItPNJ1Oh6On" width="400" height="500" frameborder="0" autoplay="true" allowtransparency="true"> -->
+    </script>
+
+
 
     <script id="oauth-template" type="text/x-handlebars-template">
       <!-- <h2>oAuth info</h2>
@@ -184,7 +193,7 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
     <script>
       (function() {
-
+        var audio = new Audio();
         /**
          * Obtains parameters from the hash of the URL
          * @return Object
@@ -202,6 +211,10 @@
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
             userProfileTemplate = Handlebars.compile(userProfileSource),
             userProfilePlaceholder = document.getElementById('user-profile');
+
+        var mediaPlayerSource = document.getElementById('media-player').innerHTML,
+            mediaPlayer = Handlebars.compile(mediaPlayerSource),
+            mediaPlayerPlaceholder = document.getElementById('mediaplayer');
 
         var userPlaylistSource = document.getElementById('user-playlist').innerHTML,
             userPlaylist = Handlebars.compile(userPlaylistSource),
@@ -245,10 +258,19 @@
                   'Authorization': 'Bearer ' + access_token
                 },
                 success: function(response) {
-                  userPlaylistPlaceholder.innerHTML = userPlaylist(response);
-                  console.log(response);
-                  $('#login').hide();
-                  $('#loggedin').show();
+                   if (response.items.length){
+// CODE IN PLAYLIST GENERATOR HERE
+                     var playlist = response.items[1];
+                     playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
+
+                     mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
+                     userPlaylistPlaceholder.innerHTML = userPlaylist(response);
+                     console.log(response);
+                     $('#login').hide();
+                     $('#loggedin').show();
+                   } else {
+
+                   }
                 }
             });
           } else {
