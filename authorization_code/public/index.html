@@ -274,29 +274,29 @@
                 success: function(response) {
                    if (response.items.length){
 // CODE IN PLAYLIST GENERATOR HERE
-                     var playlist = response.items[5];
+                     var playlist = response.items[0];
                      playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
 
                      mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
                      userPlaylistPlaceholder.innerHTML = userPlaylist(response);
                      console.log(response);
-                     $('#login').hide();
-                     $('#loggedin').show();
+                     console.log(playlist);
                      $.ajax({
                          type: 'PUT',
                          url: 'https://api.spotify.com/v1/me/player/play',
                          headers: {
                            'Authorization': 'Bearer ' + access_token
                          },
-                         body: {
-                           'context_uri':"spotify:playlist:" + playlist
+                         data: {
+                           'context_uri':"spotify:playlist:" + playlist.id
                          },
                          success: function(response) {
-
+                           console.log(response);
                          }
                      });
+                     $('#login').hide();
+                     $('#loggedin').show();
                    } else {
-
                    }
                 }
             });
