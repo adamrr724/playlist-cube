@@ -70,6 +70,9 @@
       box-shadow: 2px 2px 2px grey;
       margin: 0;
     }
+    .how-to{
+      color:#EF5350;
+    }
     .dl-horizontal {
       height: 100px;
       width: 400px;
@@ -102,7 +105,7 @@
     }
     .media {
       display: flex;
-    
+
       justify-content: center;
     }
     .spotify-button{
@@ -179,6 +182,7 @@
                 <dd class="clearfix">{{items.4.name}}</dd>
                 <dd class="clearfix">{{items.5.name}}</dd>
               </dl>
+              <a class="how-to" href="../howto.html">How can I change the order?</a>
             </div>
           </div>
         </div>
@@ -270,7 +274,7 @@
                 success: function(response) {
                    if (response.items.length){
 // CODE IN PLAYLIST GENERATOR HERE
-                     var playlist = response.items[1];
+                     var playlist = response.items[2];
                      playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
 
                      mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
