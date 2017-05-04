@@ -274,7 +274,7 @@
                 success: function(response) {
                    if (response.items.length){
 // CODE IN PLAYLIST GENERATOR HERE
-                     var playlist = response.items[2];
+                     var playlist = response.items[5];
                      playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
 
                      mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
@@ -282,6 +282,19 @@
                      console.log(response);
                      $('#login').hide();
                      $('#loggedin').show();
+                     $.ajax({
+                         type: 'PUT',
+                         url: 'https://api.spotify.com/v1/me/player/play',
+                         headers: {
+                           'Authorization': 'Bearer ' + access_token
+                         },
+                         body: {
+                           'context_uri':"spotify:playlist:" + playlist
+                         },
+                         success: function(response) {
+
+                         }
+                     });
                    } else {
 
                    }
