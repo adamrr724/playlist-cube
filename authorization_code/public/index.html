@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <title>Spotidi</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
@@ -8,124 +8,143 @@
     <link rel="icon" href="../playlistdice.png">
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <style type="text/css">
-      #login, #loggedin {
-        display: none;
-      }
-      body{
-        font-family: 'Open Sans', sans-serif;
-        background-color: #FAFAFA;
-        text-shadow: 1px 1px lightgrey;
-      }
-      .profile-block {
-        display:flex;
-        justify-content: center;
-      }
-      .text-overflow {
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 500px;
-      }
-      .jumbo {
-        display:flex;
-        justify-content: center;
-        height: 400px;
-        background-color: #607D8B;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        box-shadow: 1px 1px 2px grey;
-      }
-    .header_logo{
-        margin: 40px 0 25px 0;
-        color: white;
-        text-shadow: .5px .5px 3px #EEEEEE;
-        font-size: 65px;
-        font-weight: bold;
-        font-family: 'Montserrat', sans-serif;
-        color: #424242;
-    }
-    .user_body{
-      margin: 25px;
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .playlist_body{
-      text-align: center;
-      margin: 25px;
-      background-color:#607D8B;
-      border-radius: 5px;
-      box-shadow: 2px 2px 2px #424242;
-      /*font-weight: bold;*/
-      color: #FAFAFA;
-      width: 500px;
-      padding: 10px;
-      text-shadow: 1px 1px 3px #424242;
-    }
-    .header-box{
-      flex-direction: column;
-    }
-    .media-object{
-      border-radius: 75px;
-      box-shadow: 2px 2px 2px grey;
-      margin: 0;
-    }
-    .how-to{
-      color:#EF5350;
-    }
-    .dl-horizontal {
-      height: 100px;
-      width: 400px;
-    }
-    .user-playlist{
-      display: flex;
-      justify-content: center;
-    }
-    .login-block {
-      display:flex;
-      justify-content: center;
-    }
-    .logo{
-      height:270px;
-      width: 250px;
-      padding-bottom: 30px;
-      filter: drop-shadow(1px 1px 3px #BDBDBD);
-      /*margin-left: 15px;*/
-      /*box-shadow: 1px 1px 2px white;*/
-    }
-    #login{
-      text-align: center;
-    }
-    #mediaplayer {
-      display: flex;
-      justify-content: center;
-    }
-    .media-player{
-      border-radius: 5px;
-    }
-    .media {
-      display: flex;
+        #login, #loggedin {
+            display: none;
+        }
 
-      justify-content: center;
-    }
-    .spotify-button{
-      height: 10%;
-      border-radius: 5px;
-      box-shadow: 2px 2px 2px grey;
-    }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #FAFAFA;
+            text-shadow: 1px 1px lightgrey;
+        }
+
+        .profile-block {
+            display: flex;
+            justify-content: center;
+        }
+
+        .text-overflow {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 500px;
+        }
+
+        .jumbo {
+            display: flex;
+            justify-content: center;
+            height: 400px;
+            background-color: #607D8B;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            box-shadow: 1px 1px 2px grey;
+        }
+
+        .header_logo {
+            margin: 40px 0 25px 0;
+            color: white;
+            text-shadow: .5px .5px 3px #EEEEEE;
+            font-size: 65px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            color: #424242;
+        }
+
+        .user_body {
+            margin: 25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .playlist_body {
+            text-align: center;
+            margin: 25px;
+            background-color: #607D8B;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #424242;
+            /*font-weight: bold;*/
+            color: #FAFAFA;
+            width: 500px;
+            padding: 10px;
+            text-shadow: 1px 1px 3px #424242;
+        }
+
+        .header-box {
+            flex-direction: column;
+        }
+
+        .media-object {
+            border-radius: 75px;
+            box-shadow: 2px 2px 2px grey;
+            margin: 0;
+        }
+
+        .how-to {
+            color: #EF5350;
+        }
+
+        .dl-horizontal {
+            height: 100px;
+            width: 400px;
+        }
+
+        .user-playlist {
+            display: flex;
+            justify-content: center;
+        }
+
+        .login-block {
+            display: flex;
+            justify-content: center;
+        }
+
+        .logo {
+            height: 270px;
+            width: 250px;
+            padding-bottom: 30px;
+            filter: drop-shadow(1px 1px 3px #BDBDBD);
+            /*margin-left: 15px;*/
+            /*box-shadow: 1px 1px 2px white;*/
+        }
+
+        #login {
+            text-align: center;
+        }
+
+        #mediaplayer {
+            display: flex;
+            justify-content: center;
+        }
+
+        .media-player {
+            border-radius: 5px;
+        }
+
+        .media {
+            display: flex;
+
+            justify-content: center;
+        }
+
+        .spotify-button {
+            height: 10%;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px grey;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
-    <div class="">
-      <div class="login-block">
+<body>
+<div class="">
+    <div class="login-block">
         <div id="login">
-          <h1>Welcome to the Spotidi</h1>
-          <h3>Please login to your Spotify Account</h3>
-          <a href="/login"><img class="spotify-button" src="../spotify.png"></a>
+            <h1>Welcome to the Spotidi</h1>
+            <h3>Please login to your Spotify Account</h3>
+            <a href="/login"><img class="spotify-button" src="../spotify.png"></a>
         </div>
-      </div>
-      <div id="loggedin">
+    </div>
+    <div id="loggedin">
         <div id="user-profile">
         </div>
         <div id="playlist">
@@ -135,91 +154,91 @@
         <div id="oauth">
         </div>
         <!-- <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button> -->
-      </div>
     </div>
+</div>
 
-    <script id="user-profile-template" type="text/x-handlebars-template">
-        <div class="jumbo">
-          <div class="header-box">
+<script id="user-profile-template" type="text/x-handlebars-template">
+    <div class="jumbo">
+        <div class="header-box">
             <h1 class="header_logo">Spotidi</h1>
             <img class="logo" src="../playlistdice.png">
-          </div>
         </div>
-        <div class="profile-block">
+    </div>
+    <div class="profile-block">
         <div class="user_body">
-          <h2>Welcome {{display_name}}</h1>
-          <div class="media">
-            <div>
-              <img class="media-object" width="150" src="{{images.0.url}}" />
-            </div>
-            <!-- <div class="media-body">
-              <dl class="dl-horizontal"> -->
-                <!-- <dt>Name</dt><dd class="clearfix">{{display_name}}</dd> -->
-                <!-- <dt>Id</dt><dd>{{id}}</dd> -->
-                <!-- <dt>Email</dt><dd>{{email}}</dd> -->
-                <!-- <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd> -->
-                <!-- <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd> -->
-                <!-- <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd> -->
-                <!-- <dt>Country</dt><dd>{{country}}</dd> -->
-              <!-- </dl>
-            </div> -->
-          </div>
+            <h2>Welcome {{display_name}}</h1>
+                <div class="media">
+                    <div>
+                        <img class="media-object" width="150" src="{{images.0.url}}"/>
+                    </div>
+                    <!-- <div class="media-body">
+                      <dl class="dl-horizontal"> -->
+                    <!-- <dt>Name</dt><dd class="clearfix">{{display_name}}</dd> -->
+                    <!-- <dt>Id</dt><dd>{{id}}</dd> -->
+                    <!-- <dt>Email</dt><dd>{{email}}</dd> -->
+                    <!-- <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd> -->
+                    <!-- <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd> -->
+                    <!-- <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd> -->
+                    <!-- <dt>Country</dt><dd>{{country}}</dd> -->
+                    <!-- </dl>
+                  </div> -->
+                </div>
         </div>
-      </div>
-    </script>
+    </div>
+</script>
 
-    <script id="user-playlist" type="text/x-handlebars-template">
-      <div class="user-playlist">
+<script id="user-playlist" type="text/x-handlebars-template">
+    <div class="user-playlist">
         <div class="playlist_body">
-        <h1>Top 6 Playlists</h1>
-          <div class="media">
-            <div class="media-body">
-              <dl>
-                <dd class="clearfix">{{items.0.name}}</dd>
-                <dd class="clearfix">{{items.1.name}}</dd>
-                <dd class="clearfix">{{items.2.name}}</dd>
-                <dd class="clearfix">{{items.3.name}}</dd>
-                <dd class="clearfix">{{items.4.name}}</dd>
-                <dd class="clearfix">{{items.5.name}}</dd>
-              </dl>
-              <a class="how-to" href="../howto.html">How can I change the order?</a>
+            <h1>Top 6 Playlists</h1>
+            <div class="media">
+                <div class="media-body">
+                    <dl>
+                        <dd class="clearfix playlist" data-id="{{items.0.id}}">{{items.0.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.1.id}}">{{items.1.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.2.id}}">{{items.2.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.3.id}}">{{items.3.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.4.id}}">{{items.4.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.5.id}}">{{items.5.name}}</dd>
+                    </dl>
+                    <a class="how-to" href="../howto.html">How can I change the order?</a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </script>
+    </div>
+</script>
 
-    <script id="media-player" type="text/x-handlebars-template">
-        <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" allowtransparency="true">
-    </script>
+<script id="media-player" type="text/x-handlebars-template">
+    <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" allowtransparency="true">
+</script>
 
 
+<script id="oauth-template" type="text/x-handlebars-template">
+    <!-- <h2>oAuth info</h2>
+    <dl class="dl-horizontal">
+      <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
+      <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}></dd>
+    </dl> -->
+</script>
 
-    <script id="oauth-template" type="text/x-handlebars-template">
-      <!-- <h2>oAuth info</h2>
-      <dl class="dl-horizontal">
-        <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
-        <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}></dd>
-      </dl> -->
-    </script>
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-    <script>
-      (function() {
+<script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script>
+    (function () {
         var audio = new Audio();
+
         /**
          * Obtains parameters from the hash of the URL
          * @return Object
          */
         function getHashParams() {
-          var hashParams = {};
-          var e, r = /([^&;=]+)=?([^&;]*)/g,
-              q = window.location.hash.substring(1);
-          while ( e = r.exec(q)) {
-             hashParams[e[1]] = decodeURIComponent(e[2]);
-          }
-          return hashParams;
+            var hashParams = {};
+            var e, r = /([^&;=]+)=?([^&;]*)/g,
+                q = window.location.hash.substring(1);
+            while (e = r.exec(q)) {
+                hashParams[e[1]] = decodeURIComponent(e[2]);
+            }
+            return hashParams;
         }
 
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
@@ -245,83 +264,101 @@
             error = params.error;
 
         if (error) {
-          alert('There was an error during the authentication');
+            alert('There was an error during the authentication');
         } else {
-          if (access_token) {
-            // render oauth info
-            oauthPlaceholder.innerHTML = oauthTemplate({
-              access_token: access_token,
-              refresh_token: refresh_token
-            });
+            if (access_token) {
+                console.log(access_token);
+                // render oauth info
+                oauthPlaceholder.innerHTML = oauthTemplate({
+                    access_token: access_token,
+                    refresh_token: refresh_token
+                });
 
-            $.ajax({
-                url: 'https://api.spotify.com/v1/me',
-                headers: {
-                  'Authorization': 'Bearer ' + access_token
-                },
-                success: function(response) {
-                  userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-                  console.log(response);
-                  $('#login').hide();
-                  $('#loggedin').show();
-                }
-            });
-            $.ajax({
-                url: 'https://api.spotify.com/v1/me/playlists',
-                headers: {
-                  'Authorization': 'Bearer ' + access_token
-                },
-                success: function(response) {
-                   if (response.items.length){
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/me',
+                    headers: {
+                        'Authorization': 'Bearer ' + access_token
+                    },
+                    success: function (response) {
+                        userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+                        console.log(response);
+                        $('#login').hide();
+                        $('#loggedin').show();
+                    }
+                });
+                $.ajax({
+                    url: 'https://api.spotify.com/v1/me/playlists',
+                    headers: {
+                        'Authorization': 'Bearer ' + access_token
+                    },
+                    success: function (response) {
+                        console.log('playlists', response.items);
+                        if (response.items.length) {
 // CODE IN PLAYLIST GENERATOR HERE
-                     var playlist = response.items[0];
-                     playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
+                            var playlist = response.items[0];
+                            playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
 
-                     mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
-                     userPlaylistPlaceholder.innerHTML = userPlaylist(response);
-                     console.log(response);
-                     console.log(playlist);
-                     $.ajax({
-                         type: 'PUT',
-                         url: 'https://api.spotify.com/v1/me/player/play',
-                         headers: {
-                           'Authorization': 'Bearer ' + access_token
-                         },
-                         data: {
-                           'context_uri':"spotify:playlist:" + playlist.id
-                         },
-                         success: function(response) {
-                           console.log(response);
-                         }
-                     });
-                     $('#login').hide();
-                     $('#loggedin').show();
-                   } else {
-                   }
+                            mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
+                            userPlaylistPlaceholder.innerHTML = userPlaylist(response);
+                            console.log(response);
+                            console.log(playlist);
+                            $('#login').hide();
+                            $('#loggedin').show();
+                        } else {
+                        }
+                    },
+                    fail: function (response) {
+                        console.warn("FAIL", response)
+                    }
+                });
+
+            } else {
+                // render initial screen
+                $('#login').show();
+                $('#loggedin').hide();
+            }
+
+//            document.getElementById('obtain-new-token').addEventListener('click', function () {
+//                $.ajax({
+//                    url: '/refresh_token',
+//                    data: {
+//                        'refresh_token': refresh_token
+//                    }
+//                }).done(function (data) {
+//                    access_token = data.access_token;
+//                    oauthPlaceholder.innerHTML = oauthTemplate({
+//                        access_token: access_token,
+//                        refresh_token: refresh_token
+//                    });
+//                });
+//            }, false);
+
+        }
+
+console.log('fuck');
+        $("body").on("click", ".playlist", function () {
+            var playlist_id = $(this).attr("data-id");
+            console.log("clicked playlist " + playlist_id);
+
+            $.ajax({
+                type: 'PUT',
+                url: 'https://api.spotify.com/v1/me/player/play',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token
+                },
+                data: {
+                    'context_uri': "spotify:playlist:" + playlist.id
+                },
+                success: function (response) {
+                    console.log(response);
+                    console.log('Playing!');
+                },
+                fail: function (response) {
+                    console.log('FAIL!');
                 }
             });
-          } else {
-              // render initial screen
-              $('#login').show();
-              $('#loggedin').hide();
-          }
-
-          document.getElementById('obtain-new-token').addEventListener('click', function() {
-            $.ajax({
-              url: '/refresh_token',
-              data: {
-                'refresh_token': refresh_token
-              }
-            }).done(function(data) {
-              access_token = data.access_token;
-              oauthPlaceholder.innerHTML = oauthTemplate({
-                access_token: access_token,
-                refresh_token: refresh_token
-              });
-            });
-          }, false);
-        }
-      })();
-    </script>
-  </body>
+        });
+    })();
+</script>
+</body>
 </html>
