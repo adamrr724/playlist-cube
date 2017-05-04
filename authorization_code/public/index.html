@@ -46,6 +46,9 @@
     }
     .user_body{
       margin: 25px;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .playlist_body{
       text-align: center;
@@ -57,7 +60,6 @@
       color: #FAFAFA;
       width: 500px;
       padding: 10px;
-      padding-bottom: 30px;
       text-shadow: 1px 1px 3px #424242;
     }
     .header-box{
@@ -66,6 +68,7 @@
     .media-object{
       border-radius: 75px;
       box-shadow: 2px 2px 2px grey;
+      margin: 0;
     }
     .dl-horizontal {
       height: 100px;
@@ -90,8 +93,17 @@
     #login{
       text-align: center;
     }
+    #mediaplayer {
+      display: flex;
+      justify-content: center;
+    }
     .media-player{
       border-radius: 5px;
+    }
+    .media {
+      display: flex;
+    
+      justify-content: center;
     }
     .spotify-button{
       height: 10%;
@@ -134,20 +146,20 @@
         <div class="user_body">
           <h2>Welcome {{display_name}}</h1>
           <div class="media">
-            <div class="pull-left">
+            <div>
               <img class="media-object" width="150" src="{{images.0.url}}" />
             </div>
-            <div class="media-body">
-              <dl class="dl-horizontal">
-                <dt>Name</dt><dd class="clearfix">{{display_name}}</dd>
+            <!-- <div class="media-body">
+              <dl class="dl-horizontal"> -->
+                <!-- <dt>Name</dt><dd class="clearfix">{{display_name}}</dd> -->
                 <!-- <dt>Id</dt><dd>{{id}}</dd> -->
-                <dt>Email</dt><dd>{{email}}</dd>
+                <!-- <dt>Email</dt><dd>{{email}}</dd> -->
                 <!-- <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd> -->
                 <!-- <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd> -->
                 <!-- <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd> -->
-                <dt>Country</dt><dd>{{country}}</dd>
-              </dl>
-            </div>
+                <!-- <dt>Country</dt><dd>{{country}}</dd> -->
+              <!-- </dl>
+            </div> -->
           </div>
         </div>
       </div>
@@ -174,9 +186,7 @@
     </script>
 
     <script id="media-player" type="text/x-handlebars-template">
-    <h6>Media Player</h6>
-    <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" autoplay="true" allowtransparency="true">
-      <!-- <iframe class="media-player" src="https://open.spotify.com/embed?uri=spotify:user:121434603:playlist:4XfGxthhNEfItPNJ1Oh6On" width="400" height="500" frameborder="0" autoplay="true" allowtransparency="true"> -->
+        <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" allowtransparency="true">
     </script>
 
 
