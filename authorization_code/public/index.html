@@ -30,6 +30,10 @@
             width: 500px;
         }
 
+        .playlist:hover {
+          font-size: 25px;
+        }
+
         .jumbo {
             display: flex;
             justify-content: center;
@@ -194,12 +198,12 @@
             <div class="media">
                 <div class="media-body">
                     <dl>
-                        <dd class="clearfix playlist" data-id="{{items.0.id}}">{{items.0.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.1.id}}">{{items.1.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.2.id}}">{{items.2.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.3.id}}">{{items.3.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.4.id}}">{{items.4.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.5.id}}">{{items.5.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.1.uri}}">{{items.0.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.1.uri}}">{{items.1.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.2.uri}}">{{items.2.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.3.uri}}">{{items.3.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.4.uri}}">{{items.4.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.5.uri}}">{{items.5.name}}</dd>
                     </dl>
                     <a class="how-to" href="../howto.html">How can I change the order?</a>
                 </div>
@@ -209,7 +213,7 @@
 </script>
 
 <script id="media-player" type="text/x-handlebars-template">
-    <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" allowtransparency="true">
+    <!-- <iframe class="media-player" src={{url}} width="400" height="500" frameborder="0" allowtransparency="true"> -->
 </script>
 
 
@@ -337,8 +341,8 @@
 
 console.log('fuck');
         $("body").on("click", ".playlist", function () {
-            var playlist_id = $(this).attr("data-id");
-            console.log("clicked playlist " + playlist_id);
+            var playlist_uri = $(this).attr("data-id");
+            console.log("clicked playlist " + playlist_uri);
 
             $.ajax({
                 type: 'PUT',
@@ -346,9 +350,14 @@ console.log('fuck');
                 headers: {
                     'Authorization': 'Bearer ' + access_token
                 },
-                data: {
-                    'context_uri': "spotify:playlist:" + playlist.id
-                },
+                dataType: 'json',
+                data: JSON.stringify({
+                    "context_uri": playlist_uri,
+                    "offset": {
+                      "position": 0
+                    }
+                }),
+                processData: false,
                 success: function (response) {
                     console.log(response);
                     console.log('Playing!');
