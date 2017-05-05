@@ -30,9 +30,9 @@
             width: 500px;
         }
 
-        .playlist:hover {
+        /*.playlist:hover {
           font-size: 25px;
-        }
+        }*/
 
         .jumbo {
             display: flex;
@@ -103,6 +103,19 @@
             justify-content: center;
         }
 
+        .start{
+          font-size: 40px;
+          margin:5px;
+          color: #33691E;
+          background-color: #FAFAFA;
+          border-radius: 10px;
+          padding:10px;
+          filter: drop-shadow(1px 1px 3px black);
+        }
+        .start:hover {
+          color: #EF5350;
+        }
+
         .logo {
             height: 270px;
             width: 250px;
@@ -129,6 +142,12 @@
             display: flex;
 
             justify-content: center;
+        }
+
+        .playlist {
+          margin-top: 10px;
+          font-size: 25px;
+          color: black;
         }
 
         .spotify-button {
@@ -194,16 +213,17 @@
 <script id="user-playlist" type="text/x-handlebars-template">
     <div class="user-playlist">
         <div class="playlist_body">
+          <p class="clearfix start" data="{{items}}">Start Rolling!</p>
             <h1>Top 6 Playlists</h1>
             <div class="media">
                 <div class="media-body">
                     <dl>
-                        <dd class="clearfix playlist" data-id="{{items.0.uri}}">{{items.0.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.1.uri}}">{{items.1.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.2.uri}}">{{items.2.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.3.uri}}">{{items.3.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.4.uri}}">{{items.4.name}}</dd>
-                        <dd class="clearfix playlist" data-id="{{items.5.uri}}">{{items.5.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.0.uri}}">1. {{items.0.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.1.uri}}">2. {{items.1.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.2.uri}}">3. {{items.2.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.3.uri}}">4. {{items.3.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.4.uri}}">5. {{items.4.name}}</dd>
+                        <dd class="clearfix playlist" data-id="{{items.5.uri}}">6. {{items.5.name}}</dd>
                     </dl>
                     <a class="how-to" href="../howto.html">How can I change the order?</a>
                 </div>
@@ -230,6 +250,7 @@
 <script>
     (function () {
         var audio = new Audio();
+        var playlists = null;
 
         /**
          * Obtains parameters from the hash of the URL
@@ -299,13 +320,13 @@
                         console.log('playlists', response.items);
                         if (response.items.length) {
 // CODE IN PLAYLIST GENERATOR HERE
-                            var playlist = response.items[0];
-                            playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
+                            playlists = response;
+                            // playlist.url = "https://open.spotify.com/embed?uri=" + playlist.uri + "&view=coverart";
 
-                            mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
+                            // mediaPlayerPlaceholder.innerHTML = mediaPlayer(playlist);
                             userPlaylistPlaceholder.innerHTML = userPlaylist(response);
                             console.log(response);
-                            console.log(playlist);
+                            // console.log(playlist);
                             $('#login').hide();
                             $('#loggedin').show();
                         } else {
@@ -339,10 +360,27 @@
 
         }
 
-console.log('fuck');
-        $("body").on("click", ".playlist", function () {
-            var playlist_uri = $(this).attr("data-id");
-            console.log("clicked playlist " + playlist_uri);
+        $("body").on("click", ".start", function () {
+            // console.log(playlists);
+
+            // $.ajax({
+            //     type: 'GET',
+            //     url: 'https://192.168.239.24',
+            //     success: function (response) {
+            //         console.log(response);
+            //         var dice_side = response.side;
+            //     },
+            //     fail: function (response) {
+            //         console.log('Failed, no web server response!');
+            //     }
+            // });
+
+
+
+            var dice_side = 5;
+            var dice_playlist = playlists.items[dice_side];
+            // console.log(dice_playlist);
+            var dice_playlist_uri = dice_playlist.uri;
 
             $.ajax({
                 type: 'PUT',
@@ -352,7 +390,7 @@ console.log('fuck');
                 },
                 dataType: 'json',
                 data: JSON.stringify({
-                    "context_uri": playlist_uri,
+                    "context_uri": dice_playlist_uri,
                     "offset": {
                       "position": 0
                     }
