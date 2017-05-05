@@ -378,21 +378,20 @@
         $("body").on("click", ".start", function () {
             // console.log(playlists);
 
-            // $.ajax({
-            //     type: 'GET',
-            //     url: 'https://192.168.239.24',
-            //     success: function (response) {
-            //         console.log(response);
-            //         var dice_side = response.side;
-            //     },
-            //     fail: function (response) {
-            //         console.log('Failed, no web server response!');
-            //     }
-            // });
+            var dice_side = 0;
 
+             $.ajax({
+                 type: 'GET',
+                 url: 'http://192.168.239.23',
+                 success: function (response) {
+                     console.log(response);
+                     dice_side = response.side;
+                 },
+                 fail: function (response) {
+                     console.log('Failed, no web server response!');
+                 }
+             });
 
-
-            var dice_side = 2;
             var dice_playlist = playlists.items[dice_side];
             // console.log(dice_playlist);
             var dice_playlist_uri = dice_playlist.uri;
