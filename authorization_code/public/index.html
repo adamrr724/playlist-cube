@@ -267,6 +267,9 @@
         var audio = new Audio();
         var playlists = null;
 
+        var dice_side = null;
+        var timer;
+
         /**
          * Obtains parameters from the hash of the URL
          * @return Object
@@ -358,70 +361,60 @@
                 $('#loggedin').hide();
             }
 
-//            document.getElementById('obtain-new-token').addEventListener('click', function () {
-//                $.ajax({
-//                    url: '/refresh_token',
-//                    data: {
-//                        'refresh_token': refresh_token
-//                    }
-//                }).done(function (data) {
-//                    access_token = data.access_token;
-//                    oauthPlaceholder.innerHTML = oauthTemplate({
-//                        access_token: access_token,
-//                        refresh_token: refresh_token
-//                    });
-//                });
-//            }, false);
-
         }
 
-        $("body").on("click", ".start", function () {
-            // console.log(playlists);
+        $("body").on("click", ".start", watchCube);
 
-            var dice_side = 0;
+        function watchCube() {
+            console.log("checking cube...");
 
              $.ajax({
                  type: 'GET',
                  url: 'http://192.168.239.23',
                  success: function (response) {
                      console.log(response);
-                     dice_side = response.side;
+                     dice_side = response.Side;
+                    timer = setTimeout(watchCube, 500);
                  },
-                 fail: function (response) {
+                 error: function (response) {
                      console.log('Failed, no web server response!');
+                    timer = setTimeout(watchCube, 500);
                  }
              });
 
-            var dice_playlist = playlists.items[dice_side];
-            // console.log(dice_playlist);
-            var dice_playlist_uri = dice_playlist.uri;
+            console.log("Cube is on side " + dice_side)
+             if (dice_side != null) {
+                 var dice_playlist = playlists.items[dice_side];
+                 // console.log(dice_playlist);
+                 var dice_playlist_uri = dice_playlist.uri;
 
-            $.ajax({
-                type: 'PUT',
-                url: 'https://api.spotify.com/v1/me/player/play',
-                headers: {
-                    'Authorization': 'Bearer ' + access_token
-                },
-                dataType: 'json',
-                data: JSON.stringify({
-                    "context_uri": dice_playlist_uri,
-                    "offset": {
-                      "position": 0
-                    }
-                }),
-                processData: false,
-                success: function (response) {
-                    console.log(response);
-                    console.log('Playing!');
-                },
-                fail: function (response) {
-                    console.log('FAIL!');
-                }
-            });
-        });
+                 $.ajax({
+                     type: 'PUT',
+                     url: 'https://api.spotify.com/v1/me/player/play',
+                     headers: {
+                         'Authorization': 'Bearer ' + access_token
+                     },
+                     dataType: 'json',
+                     data: JSON.stringify({
+                         "context_uri": dice_playlist_uri,
+                         "offset": {
+                             "position": 0
+                         }
+                     }),
+                     processData: false,
+                     success: function (response) {
+                         console.log(response);
+                         console.log('Playing!');
+                     },
+                     error: function (response) {
+                         console.log('FAIL!');
+                     }
+                 });
+             }
+        }
 
         $("body").on("click", ".pause", function () {
-
+            clearTimeout(timer);
             $.ajax({
                 type: 'PUT',
                 url: 'https://api.spotify.com/v1/me/player/pause',
@@ -432,7 +425,7 @@
                     console.log(response);
                     console.log('Paused!');
                 },
-                fail: function (response) {
+                error: function (response) {
                     console.log('FAIL!');
                 }
             });
