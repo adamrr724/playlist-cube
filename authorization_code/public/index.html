@@ -113,7 +113,7 @@
           filter: drop-shadow(1px 1px 3px black);
         }
         .start:hover {
-          color: #EF5350;
+          color: black;
         }
 
         .logo {
@@ -143,6 +143,20 @@
 
             justify-content: center;
         }
+        .pause{
+          font-size: 25px;
+          margin:15px;
+          color: black;
+          width: auto;
+          background-color: #FAFAFA;
+          border-radius: 10px;
+          padding:10px;
+          filter: drop-shadow(1px 1px 3px black);
+        }
+        .pause:hover {
+          color: #EF5350;
+        }
+
 
         .playlist {
           margin-top: 10px;
@@ -226,6 +240,7 @@
                         <dd class="clearfix playlist" data-id="{{items.5.uri}}">6. {{items.5.name}}</dd>
                     </dl>
                     <a class="how-to" href="../howto.html">How can I change the order?</a>
+                    <p class="clearfix pause" data="{{items}}">Pause</p>
                 </div>
             </div>
         </div>
@@ -377,7 +392,7 @@
 
 
 
-            var dice_side = 5;
+            var dice_side = 2;
             var dice_playlist = playlists.items[dice_side];
             // console.log(dice_playlist);
             var dice_playlist_uri = dice_playlist.uri;
@@ -399,6 +414,24 @@
                 success: function (response) {
                     console.log(response);
                     console.log('Playing!');
+                },
+                fail: function (response) {
+                    console.log('FAIL!');
+                }
+            });
+        });
+
+        $("body").on("click", ".pause", function () {
+
+            $.ajax({
+                type: 'PUT',
+                url: 'https://api.spotify.com/v1/me/player/pause',
+                headers: {
+                    'Authorization': 'Bearer ' + access_token
+                },
+                success: function (response) {
+                    console.log(response);
+                    console.log('Paused!');
                 },
                 fail: function (response) {
                     console.log('FAIL!');
